@@ -1,5 +1,5 @@
 
-import './App.css'
+import './App.scss'
 import Login from './components/auth/login/Login.jsx';
 import { Register } from './components/auth/register/Register.jsx';
 import Home from './components/home/Home.jsx';
