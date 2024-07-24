@@ -1,20 +1,11 @@
 import React from 'react'
 import './Application.scss';
-import { FaJava } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io5";
+import {stackIcon} from './Stack';
 
 
 import { Link, NavLink } from 'react-router-dom'
 const ApplicationsListItem = ({ _id, title, position, stack, location, remote, imageUrl, description }) => {
-    console.log(stack);
-
-    const stackIcon = (language) => {
-        if (language == 'Java') {
-            return <span className='lang-icon'><FaJava className='icon' /></span>
-        } else if (language == 'JavaScript') {
-            return <span className='lang-icon'><IoLogoJavascript className='icon' /></span>
-        }
-    }
+    
     return (
         <NavLink className="navlink-app" to={`/application/details/${_id}`}>
             <div className='link-content'>
