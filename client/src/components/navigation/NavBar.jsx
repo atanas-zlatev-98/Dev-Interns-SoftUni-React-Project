@@ -9,7 +9,7 @@ import LoggedUser from './loggedUser';
 
 const NavBar = () => {
 
-    const {isAuthenticated,username} = useContext(AuthContext);
+    const {isAuthenticated,...userData} = useContext(AuthContext);
 
     const [showNav, setShowNav] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
@@ -33,7 +33,7 @@ const NavBar = () => {
                 </div>
 
                 <div className="navbar-profile">
-                    {isAuthenticated ? (<LoggedUser username={username}/>) :(<GuestUser/>)}
+                    {isAuthenticated ? (<LoggedUser {...userData}/>) :(<GuestUser/>)}
 
                     <Link className='navbar-dropdown' onClick={() => { setShowNav(current => !current); setShowProfile(false) }}>
                         <div className='hamburger-menu'>

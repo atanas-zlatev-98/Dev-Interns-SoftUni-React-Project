@@ -6,18 +6,18 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { FiUsers } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 
-const LoggedUser = ({username}) => {
+const LoggedUser = ({username,logoUrl}) => {
 
     const [showNav, setShowNav] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
 
   return (
     <div onClick={() => { setShowProfile(current => !current), setShowNav(false) }} className='profile-container'>
-    <img src={profileImg} className='user-profile'></img>
+    <img src={logoUrl} className='user-profile'></img>
     <div className={`profile-content ${showProfile ? 'active-content' : ''}`}>
         <div className='profile-link-container'>
             <Link className='profile-link'>
-                <img src={profileImg} width={50} height={50}></img>
+                <img src={logoUrl} width={50} height={50}></img>
                 <p>{username}</p>
             </Link>
             <p className='separator'></p>

@@ -23,6 +23,7 @@ function App() {
     userId: authState._id,
     email: authState.email,
     username: authState.username,
+    logoUrl: authState.logoUrl,
     accessToken: authState.accessToken,
     isAuthenticated: !!authState.email,
     changeAuthState,
