@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ApplicationDetails.scss';
 import { getApplcationById } from '../../api/applications-api';
 import { useParams } from 'react-router';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { stackIcon } from '../../home/applications-list/Stack';
 
 const ApplicationDetails = () => {
