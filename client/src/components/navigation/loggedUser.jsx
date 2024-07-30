@@ -28,7 +28,7 @@ const LoggedUser = ({username,logoUrl}) => {
             </Link>
         </div>
         <div>
-            <Link href='' className='mini-menu'>
+            <Link to='/create' className='mini-menu'>
                 <span id='mini-menu-span-bg'><IoCreateOutline className='mini-menu-icon' /></span>
                 <span id='mini-menu-span'>Create Application</span>
             </Link>

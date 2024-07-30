@@ -25,7 +25,7 @@ const ApplicationDetails = () => {
     <div className='app-details-header'>
         <div className='app-header'>
             <div>
-                <img className='app-details-logo' src={currentApp.imageUrl} alt={currentApp.title}/>
+                <img className='app-details-logo' src={currentApp.logoUrl} alt={currentApp.title}/>
             </div>
             <div className='m-0 p-1 app-text'>
                 <div className=''>

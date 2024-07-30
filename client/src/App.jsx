@@ -8,6 +8,7 @@ import ApplicationDetails from './components/details/application-details/Applica
 import Home from './components/home/Home.jsx';
 import NavBar from './components/navigation/NavBar.jsx';
 import { Routes,Route } from "react-router-dom";
+import Create from './components/create-item/Create.jsx';
 
 function App() {
 
@@ -38,6 +39,8 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/application/details/:appId" element={<ApplicationDetails/>}/>
+            <Route path="/create" element={<Create/>}/>
+
           </Routes>
 
 

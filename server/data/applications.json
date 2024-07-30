@@ -5,7 +5,7 @@
         "stack": [],
         "location":"Sofia",
         "remote": "Home",
-        "imageUrl": "https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1721760821~exp=1721761421~hmac=0fc7ca5b4ca067a2181a1c27a3981b8a3e72bd1437527f509728fc9129021509",
+        "logoUrl": "https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1721760821~exp=1721761421~hmac=0fc7ca5b4ca067a2181a1c27a3981b8a3e72bd1437527f509728fc9129021509",
         "description": "Expand your collection with the new Charming Courier mount (with Skyriding!), Swoopy the Owl pet, and a future full of endless adventure with the purchase of a World of Warcraft® 6-Month Subscription. Available now from the Battle.net Shop.",
         "_id": "d2f4410e-c5db-4cc1-99de-7a51634d8636"
     },
@@ -15,7 +15,7 @@
         "stack": ["Java","JavaScript"],
         "location":"Sofia",
         "remote": "Hybrid",
-        "imageUrl": "https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1721760821~exp=1721761421~hmac=0fc7ca5b4ca067a2181a1c27a3981b8a3e72bd1437527f509728fc9129021509",
+        "logoUrl": "https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1721760821~exp=1721761421~hmac=0fc7ca5b4ca067a2181a1c27a3981b8a3e72bd1437527f509728fc9129021509",
         "description": "Expand your collection with the new Charming Courier mount (with Skyriding!), Swoopy the Owl pet, and a future full of endless adventure with the purchase of a World of Warcraft® 6-Month Subscription. Available now from the Battle.net Shop.",
         "_id": "6d978bad-c010-4ece-8a6a-a27bb0722323"
     },
@@ -25,7 +25,7 @@
         "stack": [],
         "location":"Sofia",
         "remote": "On Site",
-        "imageUrl": "https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1721760821~exp=1721761421~hmac=0fc7ca5b4ca067a2181a1c27a3981b8a3e72bd1437527f509728fc9129021509",
+        "logoUrl": "https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1721760821~exp=1721761421~hmac=0fc7ca5b4ca067a2181a1c27a3981b8a3e72bd1437527f509728fc9129021509",
         "description": "Expand your collection with the new Charming Courier mount (with Skyriding!), Swoopy the Owl pet, and a future full of endless adventure with the purchase of a World of Warcraft® 6-Month Subscription. Available now from the Battle.net Shop.",
         "_id": "84369f5c-c723-4e60-9f05-d645901ec275"
     }

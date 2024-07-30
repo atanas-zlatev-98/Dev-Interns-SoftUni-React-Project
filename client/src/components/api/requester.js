@@ -6,7 +6,7 @@ export default async function requester(method, url, data) {
     if(accessToken){
       options.headers = {
           ...options.headers,
-          'X-Authorization':accessToken,
+          //'X-Authorization':accessToken,
       }
     }
   
