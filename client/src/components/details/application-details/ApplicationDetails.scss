@@ -5,7 +5,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 30px;
+    padding-top: 30px;
 }
 
 .app-details-header {
@@ -70,6 +70,18 @@ background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(131,255,162,1) 8
     }
 }
 
+.app-navlink-delete {
+    color: white;
+    background-color: #304FFE;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    &:hover {
+        color: white;
+    }
+}
+
+
 .apply-now {
     display: flex;
     align-items: center;
@@ -99,6 +111,8 @@ background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(131,255,162,1) 8
     height: 400px;
     background-color: white;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .stack-icons-app {
@@ -122,4 +136,13 @@ background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(131,255,162,1) 8
     border-radius: 5px;
     background-color:#84d5ff26;
    }
+}
+
+.main-h2 {
+    color: black;
+    padding: 0px 20px 20px 20px;
+}
+.main-ul {
+    color: black;
+    
 }

@@ -1,12 +1,12 @@
 export default async function requester(method, url, data) {
     const options = {};
   
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = sessionStorage.getItem('accessToken');
   
     if(accessToken){
       options.headers = {
           ...options.headers,
-          //'X-Authorization':accessToken,
+          'X-Authorization':accessToken,
       }
     }
   

@@ -20,7 +20,6 @@ const Create = () => {
         remote: "",
         description: "",
         banner:'',
-        //stack: [],
       }
     
     const createHandler = async (values) => {

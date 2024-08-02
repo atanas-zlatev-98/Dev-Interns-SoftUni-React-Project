@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './ApplicationDetails.scss';
 import { getApplcationById } from '../../api/applications-api';
 import { useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { stackIcon } from '../../home/applications-list/Stack';
+import { AuthContext } from '../../context/authContext';
 
 const ApplicationDetails = () => {
 
     const [currentApp,setCurrentApp] = useState({});
 
+    const {userId} = useContext(AuthContext);
     const {appId} = useParams();
 
     useEffect(()=>{
@@ -16,9 +17,10 @@ const ApplicationDetails = () => {
             const app = await getApplcationById(appId);
             setCurrentApp(app);
         }
+        
         findAppById();
+      
     },[])
-    console.log(currentApp);
   return (
    <div className='app-details'>
 
@@ -40,18 +42,36 @@ const ApplicationDetails = () => {
 
         <div className='apply-now'>
             <div>
-                <NavLink className='app-navlink' to={'/'}>Apply Now!</NavLink>
+                {userId == currentApp.userId ? 
+                (<div><NavLink className='app-navlink' to={'/'}>Edit</NavLink><NavLink className='app-navlink-delete' to={'/'}>Delete</NavLink></div>) :
+                (<NavLink className='app-navlink' to={'/'}>Apply Now!</NavLink>)}
+                
             </div>
         </div>
     </div>
 
     <div className='app-main'>
         <div className='app-main-content'>
-            <div>
-                <h3 className='stack-icons-app'>Tech Stack: {currentApp.stack?.map(language => stackIcon(language))}</h3>
-            </div>
+        <div>
+        <h2 className='main-h2'>{currentApp.title}</h2>
+            <ul className='main-ul'>
+                <h3>Job Description</h3>
+                <li>Position - {currentApp.position}</li>
+                <li>Location - {currentApp.location}</li>
+                <li>Position Required - {currentApp.remote}</li>
+                <h3>Description</h3>
+                <p>{currentApp.description}</p>
+            </ul>
         </div>
-        <div className='app-main-company'></div>
+           
+        </div>
+        <div className='app-main-company'>
+
+                    <img  alt=''/>
+
+
+
+        </div>
     </div>
 
    </div>

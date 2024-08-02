@@ -9,20 +9,21 @@ import Home from './components/home/Home.jsx';
 import NavBar from './components/navigation/NavBar.jsx';
 import { Routes,Route } from "react-router-dom";
 import Create from './components/create-item/Create.jsx';
+import Profile from './components/profile/Profile.jsx';
 
 function App() {
 
   const [authState, setAuthState] = useState({});
 
   const changeAuthState = (state) => {
-
-    localStorage.setItem('accessToken',state.accessToken);
+    sessionStorage.setItem('accessToken',state.accessToken);
     setAuthState(state);
   }
 
   const contextData = {
     userId: authState._id,
     email: authState.email,
+    summary: authState.summary,
     username: authState.username,
     logoUrl: authState.logoUrl,
     accessToken: authState.accessToken,
@@ -40,6 +41,7 @@ function App() {
             <Route path="/register" element={<Register/>}/>
             <Route path="/application/details/:appId" element={<ApplicationDetails/>}/>
             <Route path="/create" element={<Create/>}/>
+            <Route path="/profile" element={<Profile/>}/>
 
           </Routes>
 
