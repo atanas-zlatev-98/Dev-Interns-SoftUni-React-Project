@@ -8,7 +8,7 @@ const Profile = () => {
     const { ...userData } = useContext(AuthContext);
 
     const [allApps, setAllApps] = useState([]);
-
+    
     useEffect(() => {
         const getApplications = async () => {
 

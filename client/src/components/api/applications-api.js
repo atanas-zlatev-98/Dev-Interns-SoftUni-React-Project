@@ -1,4 +1,4 @@
-import { get, post } from "./requester";
+import { del, get, post } from "./requester";
 const baseURL = "http://localhost:3030/jsonstore";
 
 export const getAllApplications = async () => {
@@ -16,4 +16,9 @@ export const getApplcationById = async (appId) => {
 export const createApplication = async (applicationData) => {
   const create = await post(`${baseURL}/applications`,applicationData);
   return create;
+}
+
+export const deleteApp = async (appId) => {
+  const delApp = await del(`${baseURL}/applications/${appId}`)
+  return delApp
 }

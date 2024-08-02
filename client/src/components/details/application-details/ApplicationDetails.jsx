@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './ApplicationDetails.scss';
-import { getApplcationById } from '../../api/applications-api';
-import { useParams } from 'react-router';
+import { deleteApp, getApplcationById } from '../../api/applications-api';
+import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 
@@ -11,6 +11,14 @@ const ApplicationDetails = () => {
 
     const {userId} = useContext(AuthContext);
     const {appId} = useParams();
+
+    const navigate = useNavigate();
+
+    const deleteApplication = async () =>{
+        await deleteApp(appId);
+        navigate('/');
+    }
+
 
     useEffect(()=>{
         const findAppById = async () =>{
@@ -43,7 +51,7 @@ const ApplicationDetails = () => {
         <div className='apply-now'>
             <div>
                 {userId == currentApp.userId ? 
-                (<div><NavLink className='app-navlink' to={'/'}>Edit</NavLink><NavLink className='app-navlink-delete' to={'/'}>Delete</NavLink></div>) :
+                (<div><NavLink className='app-navlink' to={'/'}>Edit</NavLink><NavLink className='app-navlink-delete' onClick={deleteApplication}>Delete</NavLink></div>) :
                 (<NavLink className='app-navlink' to={'/'}>Apply Now!</NavLink>)}
                 
             </div>

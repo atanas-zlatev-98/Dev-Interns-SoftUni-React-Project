@@ -34,3 +34,4 @@ export default async function requester(method, url, data) {
   
 export const get = (url,data) => requester('GET',url,data);
 export const post = (url,data) =>requester('POST',url,data);
+export const del = (url) =>requester('DELETE',url);
