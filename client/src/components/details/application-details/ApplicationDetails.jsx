@@ -15,8 +15,14 @@ const ApplicationDetails = () => {
     const navigate = useNavigate();
 
     const deleteApplication = async () =>{
-        await deleteApp(appId);
-        navigate('/');
+
+        try{
+            await deleteApp(appId);
+            navigate('/');
+        }catch(err){
+            console.log(err.message);
+        }
+        
     }
 
 

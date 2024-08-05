@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/authContext';
 
 import './NavBar.scss';
 import GuestUser from './guestUser';
 import LoggedUser from './loggedUser';
+import { AuthContext } from '../context/authContext';
 
 
 const NavBar = () => {

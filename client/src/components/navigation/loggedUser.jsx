@@ -24,7 +24,7 @@ const LoggedUser = ({userId, username,logoUrl}) => {
 
             <Link to="" className='created-offers'>
                 <span id='mini-menu-span-bg'><IoApps /></span>
-                <span >Created Offers</span>
+                <span >Created Applications</span>
             </Link>
         </div>
         <div>
@@ -32,15 +32,15 @@ const LoggedUser = ({userId, username,logoUrl}) => {
                 <span id='mini-menu-span-bg'><IoCreateOutline className='mini-menu-icon' /></span>
                 <span id='mini-menu-span'>Create Application</span>
             </Link>
-            <Link href='' className='mini-menu'>
+            {/*<Link href='' className='mini-menu'>
                 <span id='mini-menu-span-bg'><FiUsers className='mini-menu-icon' /></span>
                 <span id='mini-menu-span'>View Application</span>
             </Link>
             <Link to='' className='mini-menu'>
                 <span id='mini-menu-span-bg'><IoMdNotificationsOutline className='mini-menu-icon' /></span>
                 <span id='mini-menu-span'>Notifications</span>
-            </Link>
-            <Link to='' className='mini-menu'>
+            </Link>*/}
+            <Link to='/logout' className='mini-menu'>
                 <span id='mini-menu-span-bg'><IoExitOutline className='mini-menu-icon' /></span>
                 <span id='mini-menu-span'>Logout</span>
             </Link>

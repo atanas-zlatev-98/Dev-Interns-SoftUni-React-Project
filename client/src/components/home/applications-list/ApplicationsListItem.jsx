@@ -3,7 +3,7 @@ import './Application.scss';
 
 
 import { Link, NavLink } from 'react-router-dom'
-const ApplicationsListItem = ({ _id, title, position, stack, location, remote, logoUrl, description }) => {
+const ApplicationsListItem = ({ _id, title, position, location, remote, logoUrl, description }) => {
     
     return (
         <NavLink className="navlink-app" to={`/application/details/${_id}`}>

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../context/authContext';
 import { getAllApplications } from '../api/applications-api';
 import './Profile.scss';
 import ApplicationsListItem from '../home/applications-list/ApplicationsListItem';
+import { AuthContext } from '../context/authContext';
 
 const Profile = () => {
     const { ...userData } = useContext(AuthContext);

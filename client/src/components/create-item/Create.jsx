@@ -5,6 +5,7 @@ import {useForm} from '../hooks/useForm';
 import {createApplication} from '../api/applications-api';
 import { AuthContext } from '../context/authContext';
 
+
 const Create = () => {
 
     const navigate = useNavigate()
