@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { getAllApplications } from '../api/applications-api';
+import { getAllJobs } from '../api/jobs-api';
+import JobListItem from './job-list/JobListItem';
 import './Home.scss';
-import ApplicationsListItem from './applications-list/ApplicationsListItem';
 
 const Home = () => {
 
-    const [allApplications, setAllApplications] = useState([]);
+    const [allJobs, setAllJobs] = useState([]);
 
     useEffect(() => {
 
-        const getApplications = async () => {
+        const getJobs = async () => {
 
-            const result = await getAllApplications();
 
-            setAllApplications(result);
+            const result = await getAllJobs();
+
+            setAllJobs(result);
 
         }
 
-        getApplications();
+        getJobs();
     }, [])
 
     return (
@@ -34,12 +35,12 @@ const Home = () => {
                 <div className='content'>
                     <div className='all-apps-header'>
                         <div className='job-opp'>
-                            <p className='job-opp-inner m-0'>{allApplications.length} Job opportunities found</p>
+                            <p className='job-opp-inner m-0'>{allJobs.length} Job opportunities found</p>
                             {/*<p className='m-0 job-opp-inner-2'>You can see all available jobs below.</p>*/}
                         </div>
                         <div className='newsletter'><p className='newsletter-inner'>Subscribe for our Newsletter</p></div>
                     </div>
-                    {allApplications.map(app => <ApplicationsListItem key={app._id} {...app} />)}
+                    {allJobs?.map(job => <JobListItem key={job._id} {...job} />)}
                 </div>
 
             </div>

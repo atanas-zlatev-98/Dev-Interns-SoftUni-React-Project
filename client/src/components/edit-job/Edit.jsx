@@ -1,52 +1,18 @@
 import React, { useContext } from 'react'
-import './Create.scss';
-import {Link, useNavigate} from 'react-router-dom';
-import {useForm} from '../hooks/useForm';
-import {createApplication} from '../api/applications-api';
-import { AuthContext } from '../context/authContext';
+import './Edit.scss';
+import {Link} from 'react-router-dom';
 
+const Edit = () => {
 
-const Create = () => {
-
-    const navigate = useNavigate()
-
-    const {userId,logoUrl} = useContext(AuthContext);
-
-    const initialValues = {
-        userId: userId,
-        logoUrl: logoUrl,
-        title: "",
-        position: "",
-        location: "",
-        remote: "",
-        description: "",
-        banner:'',
-      }
-    
-    const createHandler = async (values) => {
-
-        //const {userId} = useContext(AuthContext); 
-
-        try{
-          const {_id:appId} = await createApplication(values);
-          navigate(`/application/details/${appId}`);
-        }catch(err){
-          console.log(err.message);
-        }
-    
-      }
-
-
-    const { values, changeHandler, submitHandler } = useForm(initialValues, createHandler);
     return (
-        <div className='create-conteiner'>
-            <div className='create-form'>
+        <div className='edit-conteiner'>
+            <div className='edit-form'>
 
-                <div className='logo-create'>
+                <div className='logo-edit'>
                     <Link to='/' className='logo-text'>DEV<span>.</span>INTERNS</Link>
                 </div>
 
-                <p id='create-text'>Create Application</p>
+                <p id='edit-text'>Edit Application</p>
                 <form onSubmit={submitHandler}>
                     <div id='form-group'>
                         <label htmlFor='title'>Title</label>
@@ -79,10 +45,8 @@ const Create = () => {
                     </div>
 
                     <div id='form-group'>
-                        <input id='btn-create' type="submit" value='Create' />
+                        <input id='btn-edit' type="submit" value='Edit' />
                     </div>
-
-                    <Link to={'/login'}>Already have an account?</Link>
 
                 </form>
             </div>
@@ -90,4 +54,4 @@ const Create = () => {
     )
 }
 
-export default Create
+export default Edit

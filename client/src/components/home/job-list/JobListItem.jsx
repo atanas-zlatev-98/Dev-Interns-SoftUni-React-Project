@@ -1,12 +1,11 @@
 import React from 'react'
-import './Application.scss';
+import {NavLink } from 'react-router-dom'
+import './Job.scss';
 
-
-import { Link, NavLink } from 'react-router-dom'
-const ApplicationsListItem = ({ _id, title, position, location, remote, logoUrl, description }) => {
+const JobListItem = ({ _id, title, position, location, remote, logoUrl, description }) => {
     
     return (
-        <NavLink className="navlink-app" to={`/application/details/${_id}`}>
+        <NavLink className="navlink-app" to={`/job/details/${_id}`}>
             <div className='link-content'>
                 <img src={logoUrl} className='content-img' />
                 <div className='application-content'>
@@ -26,4 +25,4 @@ const ApplicationsListItem = ({ _id, title, position, location, remote, logoUrl,
     )
 }
 
-export default ApplicationsListItem
+export default JobListItem

@@ -1,26 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { getAllApplications } from '../api/applications-api';
+import {getAllJobs } from '../api/jobs-api';
 import './Profile.scss';
-import ApplicationsListItem from '../home/applications-list/ApplicationsListItem';
 import { AuthContext } from '../context/authContext';
+import JobListItem from '../home/job-list/JobListItem';
 
 const Profile = () => {
+
     const { ...userData } = useContext(AuthContext);
 
-    const [allApps, setAllApps] = useState([]);
+    const [allJobs, setAllJobs] = useState([]);
     
     useEffect(() => {
-        const getApplications = async () => {
+        const getJobs = async () => {
 
-            const result = await getAllApplications();
+            const result = await getAllJobs();
 
-            setAllApps(result);
+            setAllJobs(result);
 
         }
-        getApplications();
+        getJobs();
     }, [])
 
-    const filteredApps = allApps.filter(app => app.userId === userData.userId);
+    const filteredJobs = allJobs.filter(job => job.userId === userData.userId);
 
     return (
         <div className='profile-conteiner'>
@@ -47,8 +48,8 @@ const Profile = () => {
                     </div>
 
                     <div>
-                        <h2>Created Applications</h2>
-                        {filteredApps.length > 0 ? filteredApps.map(app => <ApplicationsListItem key={app._Id} {...app} />) : <p className='no-apps'>No Applications created</p>}
+                        <h2>Created Jobs</h2>
+                        {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...app} />) : <p className='no-apps'>No Applications created</p>}
                         <div>
 
                         </div>

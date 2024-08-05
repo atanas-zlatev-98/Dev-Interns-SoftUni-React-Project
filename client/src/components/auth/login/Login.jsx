@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.scss';
 import { useLogin } from '../../hooks/useAuth';
 import { useForm } from '../../hooks/useForm';
+import './Login.scss';
 
 const initialValues = { email: '', password: '' };
 

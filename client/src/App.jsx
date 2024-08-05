@@ -3,11 +3,11 @@ import './App.scss'
 import Login from './components/auth/login/Login.jsx';
 import { Register } from './components/auth/register/Register.jsx';
 import { AuthProvider } from './components/context/authContext.jsx';
-import ApplicationDetails from './components/details/application-details/ApplicationDetails.jsx';
+import JobDetails from './components/job-details/JobDetails.jsx';
 import Home from './components/home/Home.jsx';
 import NavBar from './components/navigation/NavBar.jsx';
 import { Routes,Route } from "react-router-dom";
-import Create from './components/create-item/Create.jsx';
+import Create from './components/create-job/Create.jsx';
 import Profile from './components/profile/Profile.jsx';
 import LogOut from './components/auth/logout/LogOut.jsx';
 
@@ -23,8 +23,8 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path='/logout' element={<LogOut/>}/>
-            
-            <Route path="/application/details/:appId" element={<ApplicationDetails/>}/>
+
+            <Route path="/job/details/:jobId" element={<JobDetails/>}/>
             <Route path="/create" element={<Create/>}/>
             <Route path="/profile" element={<Profile/>}/>
             
