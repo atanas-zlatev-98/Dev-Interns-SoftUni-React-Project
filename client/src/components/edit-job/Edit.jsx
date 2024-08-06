@@ -1,8 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Edit.scss';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useForm } from '../hooks/useForm';
+import { getJobById, updateJob } from '../api/jobs-api';
+
+
+const initialValues = {
+    title: "",
+    position: "",
+    location: "",
+    remote: "",
+    description: "",
+    banner: '',
+}
 
 const Edit = () => {
+
+    const [job, setJob] = useState({});
+    const navigate = useNavigate();
+
+    const { jobId } = useParams();
+
+    useEffect(() => {
+
+        const getJob = async () => {
+            const currentJob = await getJobById(jobId)
+            setJob(currentJob);
+        }
+
+        getJob();
+
+    }, [])
+
+    const { changeHandler, submitHandler, values, setValues } = useForm(Object.assign(initialValues, job), async (values) => {
+
+        const confirmEdit = confirm('Are you sure you want to edit this job?');
+
+        if (confirmEdit) {
+            await updateJob(jobId, values);
+            navigate(`/job/details/${jobId}`)
+        }
+
+    });
 
     return (
         <div className='edit-conteiner'>

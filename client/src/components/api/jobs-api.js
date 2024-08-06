@@ -1,4 +1,4 @@
-import { del, get, post } from "./requester";
+import { del, get, post, update } from "./requester";
 const baseURL = "http://localhost:3030/jsonstore";
 
 export const getAllJobs = async () => {
@@ -21,4 +21,9 @@ export const createJob = async (jobData) => {
 export const deleteJob = async (jobId) => {
   const delApp = await del(`${baseURL}/jobs/${jobId}`)
   return delApp
+}
+
+export const updateJob = async (jobId,jobData) => {
+  const updateApp = await update(`${baseURL}/jobs/${jobId}`,jobData);
+  return updateApp;
 }

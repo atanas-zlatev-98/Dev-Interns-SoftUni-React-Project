@@ -10,6 +10,7 @@ import { Routes,Route } from "react-router-dom";
 import Create from './components/create-job/Create.jsx';
 import Profile from './components/profile/Profile.jsx';
 import LogOut from './components/auth/logout/LogOut.jsx';
+import Edit from './components/edit-job/Edit.jsx';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
 
             <Route path="/job/details/:jobId" element={<JobDetails/>}/>
             <Route path="/create" element={<Create/>}/>
+            <Route path="/job/edit/:jobId" element={<Edit/>}/>
             <Route path="/profile" element={<Profile/>}/>
             
 
