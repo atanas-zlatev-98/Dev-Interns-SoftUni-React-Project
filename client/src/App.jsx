@@ -11,6 +11,7 @@ import Create from './components/create-job/Create.jsx';
 import Profile from './components/profile/Profile.jsx';
 import LogOut from './components/auth/logout/LogOut.jsx';
 import Edit from './components/edit-job/Edit.jsx';
+import RouteGuard from './components/guards/RouteGuard.jsx';
 
 function App() {
 
@@ -26,9 +27,9 @@ function App() {
             <Route path='/logout' element={<LogOut/>}/>
 
             <Route path="/job/details/:jobId" element={<JobDetails/>}/>
-            <Route path="/create" element={<Create/>}/>
-            <Route path="/job/edit/:jobId" element={<Edit/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/create" element={<RouteGuard><Create/></RouteGuard>}/>
+            <Route path="/job/edit/:jobId" element={<RouteGuard><Edit/></RouteGuard>}/>
+            <Route path="/profile" element={<RouteGuard><Profile/></RouteGuard>}/>
             
 
           </Routes>

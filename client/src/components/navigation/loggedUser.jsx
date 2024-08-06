@@ -1,12 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
-import profileImg from '../../assets/images/profile.png';
 import { IoCreateOutline, IoApps, IoExitOutline } from "react-icons/io5";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { FiUsers } from "react-icons/fi";
+
 import { Link } from 'react-router-dom';
 
-const LoggedUser = ({userId, username,logoUrl}) => {
+const LoggedUser = ({username,logoUrl}) => {
 
     const [showNav, setShowNav] = useState(false);
     const [showProfile, setShowProfile] = useState(false);

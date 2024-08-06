@@ -9,7 +9,7 @@ const JobDetails = () => {
 
     const [currentJob, setCurrentJob] = useState({});
 
-    const { userId } = useContext(AuthContext);
+    const { userId,isAuthenticated } = useContext(AuthContext);
     const { jobId } = useParams();
 
     const navigate = useNavigate();
@@ -59,9 +59,10 @@ const JobDetails = () => {
 
                 <div className='apply-now'>
                     <div>
-                        {userId == currentJob.userId ?
+                        {isAuthenticated && <div>{userId == currentJob.userId ?
                             (<div><NavLink className='app-navlink' to={`/job/edit/${jobId}`}>Edit</NavLink><NavLink className='app-navlink-delete' onClick={removeJob}>Delete</NavLink></div>) :
-                            (<NavLink className='app-navlink' to={'/'}>Apply Now!</NavLink>)}
+                            (<NavLink className='app-navlink' to={'/'}>Apply Now!</NavLink>)}</div>}
+                       
 
                     </div>
                 </div>

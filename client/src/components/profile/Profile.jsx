@@ -49,7 +49,7 @@ const Profile = () => {
 
                     <div>
                         <h2>Created Jobs</h2>
-                        {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...app} />) : <p className='no-apps'>No Applications created</p>}
+                        {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...job} />) : <p className='no-apps'>No Applications created</p>}
                         <div>
 
                         </div>
