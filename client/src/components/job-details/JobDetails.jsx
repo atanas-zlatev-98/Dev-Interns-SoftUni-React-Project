@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { deleteJob, getJobById } from '../api/jobs-api';
+import { deleteJob, getJobById, updateJob } from '../api/jobs-api';
 import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
@@ -9,7 +9,7 @@ const JobDetails = () => {
 
     const [currentJob, setCurrentJob] = useState({});
 
-    const { userId,isAuthenticated } = useContext(AuthContext);
+    const { userId, isAuthenticated } = useContext(AuthContext);
     const { jobId } = useParams();
 
     const navigate = useNavigate();
@@ -31,18 +31,57 @@ const JobDetails = () => {
 
     useEffect(() => {
         const findJobById = async () => {
-            try{
+            try {
                 const job = await getJobById(jobId);
                 setCurrentJob(job);
-            }catch(err){
+            } catch (err) {
                 throw new Error(err.message);
             }
-          
+
         }
 
         findJobById();
 
     }, [])
+
+
+    const followUs = async () => {
+
+        const isSaved = currentJob.savedList.includes(userId);
+
+        if (isSaved) {
+
+            const filterSavedList = currentJob.savedList.filter(savedUser => savedUser !== userId);
+            currentJob.savedList = filterSavedList;
+
+            setCurrentJob(currentJob);
+
+            try {
+                await updateJob(jobId, currentJob);
+                navigate(`/job/details/${jobId}`)
+
+            } catch (err) {
+                throw new Error(err.message);
+            }
+
+            console.log('isSaved' + currentJob.savedList);
+        }
+
+        if (!isSaved) {
+            currentJob.savedList.push(userId);
+            setCurrentJob(currentJob)
+            try {
+                await updateJob(jobId, currentJob);
+                navigate(`/job/details/${jobId}`)
+
+            } catch (err) {
+                throw new Error(err.message);
+            }
+
+            console.log('is not saved' + currentJob.savedList);
+        }
+
+    }
     return (
         <div className='app-details'>
 
@@ -64,10 +103,10 @@ const JobDetails = () => {
 
                 <div className='apply-now'>
                     <div>
-                        {isAuthenticated && <div>{userId == currentJob.userId ?
+                        {isAuthenticated && <div>{userId == currentJob.ownerId ?
                             (<div><NavLink className='app-navlink' to={`/job/edit/${jobId}`}>Edit</NavLink><NavLink className='app-navlink-delete' onClick={removeJob}>Delete</NavLink></div>) :
                             (<NavLink className='app-navlink' to={'/'}>Apply Now!</NavLink>)}</div>}
-                       
+
 
                     </div>
                 </div>
@@ -77,6 +116,7 @@ const JobDetails = () => {
                 <div className='app-main-content'>
                     <div>
                         <h2 className='main-h2'>{currentJob.title}</h2>
+                        <img className='banner' src={currentJob.banner} alt={currentJob.title}/>
                         <ul className='main-ul'>
                             <h3>Job Description</h3>
                             <li>Position - {currentJob.position}</li>
@@ -90,10 +130,20 @@ const JobDetails = () => {
                 </div>
                 <div className='app-main-company'>
 
-                    <img alt='' />
+                    <h3>Information</h3>
 
+                    <img  src={currentJob.logoUrl} alt={currentJob.title} />
+                    <p>{currentJob.ownerName}</p>
 
+                    <p className='owner-summary'>{currentJob.ownerSummary}</p>
 
+                    <div className='save-btn-container'>
+                        <p>{currentJob.savedList?.length > 0 ? currentJob.savedList.length : "0"} people have saved this job!</p>
+                        {currentJob.ownerId != userId ? <button onClick={followUs}>
+                            {currentJob.savedList?.includes(userId) ? "Saved" : 'Save Job'}
+                        </button> : <p className='cant-save-own-job'>You can't save your own job</p>}
+
+                    </div>
                 </div>
             </div>
 

@@ -11,17 +11,20 @@ const Create = () => {
 
     const navigate = useNavigate()
 
-    const { userId, logoUrl } = useContext(AuthContext);
+    const { userId, logoUrl,summary,username } = useContext(AuthContext);
 
     const initialValues = {
-        userId: userId,
+        ownerId: userId,
         logoUrl: logoUrl,
+        ownerName: username, 
+        ownerSummary: summary,
         title: "",
         position: "",
         location: "",
         remote: "",
         description: "",
         banner: '',
+        savedList: [],
     }
 
     const createHandler = async (values) => {

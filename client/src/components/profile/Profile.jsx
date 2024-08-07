@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {getAllJobs } from '../api/jobs-api';
+import { getAllJobs } from '../api/jobs-api';
 import './Profile.scss';
 import { AuthContext } from '../context/authContext';
 import JobListItem from '../home/job-list/JobListItem';
@@ -9,14 +9,14 @@ const Profile = () => {
     const { ...userData } = useContext(AuthContext);
 
     const [allJobs, setAllJobs] = useState([]);
-    
+
     useEffect(() => {
         const getJobs = async () => {
 
-            try{
+            try {
                 const result = await getAllJobs();
                 setAllJobs(result);
-            }catch(err){
+            } catch (err) {
                 throw new Error(err.message);
             }
 
@@ -24,7 +24,7 @@ const Profile = () => {
         getJobs();
     }, [])
 
-    const filteredJobs = allJobs.filter(job => job.userId === userData.userId);
+    const filteredJobs = allJobs.filter(job => job.savedList?.includes(userData.userId));
 
     return (
         <div className='profile-conteiner'>
@@ -32,7 +32,7 @@ const Profile = () => {
                 <img id='logo' src={userData.logoUrl} alt={userData.username} />
                 <div className='profile-data'>
 
-                <div className='forms-data'>
+                    <div className='forms-data'>
                         <div>
                             <label>Email: </label>
                             <input type='text' value={userData.email} disabled></input>
@@ -51,8 +51,8 @@ const Profile = () => {
                     </div>
 
                     <div>
-                        <h2>Created Jobs</h2>
-                        {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...job} />) : <p className='no-apps'>No Jobs created</p>}
+                        <h2>Saved Jobs</h2>
+                        {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...job} />) : <p className='no-apps'>No saved Jobs</p>}
                         <div>
 
                         </div>

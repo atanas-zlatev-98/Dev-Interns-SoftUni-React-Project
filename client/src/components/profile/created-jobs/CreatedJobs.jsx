@@ -23,14 +23,14 @@ const CreatedJobs = () => {
         getJobs();
     }, [])
 
-    const filteredJobs = allJobs.filter(job => job.userId === userData.userId);
+    const filteredJobs = allJobs.filter(job => job.ownerId === userData.userId);
 
     return (
         <div className='created-jobs-conteiner'>
             <div className='created-jobs'>
 
                     <h2 className='created-jobs-h2'>Created Jobs</h2>
-                    {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...job} />) : <p className='no-apps'>No Jobs created</p>}
+                    {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...job} />) : <p className='no-jobs'>No Jobs created</p>}
                 
             </div>
         </div>

@@ -22,7 +22,7 @@ const Edit = () => {
     const navigate = useNavigate();
 
     const { jobId } = useParams();
-    const { userId: ownerId } = useContext(AuthContext)
+    const { ownerId} = useContext(AuthContext)
 
     useEffect(() => {
 
