@@ -20,7 +20,7 @@ const LoggedUser = ({username,logoUrl}) => {
             </Link>
             <p className='separator'></p>
 
-            <Link to="" className='created-offers'>
+            <Link to="/profile/created-jobs" className='created-offers'>
                 <span id='mini-menu-span-bg'><IoApps /></span>
                 <span >Created Applications</span>
             </Link>

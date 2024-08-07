@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Edit.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { getJobById, updateJob } from '../api/jobs-api';
+import { AuthContext } from '../context/authContext';
 
 
 const initialValues = {
@@ -20,17 +21,23 @@ const Edit = () => {
     const navigate = useNavigate();
 
     const { jobId } = useParams();
+    const {userId: ownerId} = useContext(AuthContext)
 
     useEffect(() => {
 
         const getJob = async () => {
             const currentJob = await getJobById(jobId)
             setJob(currentJob);
+             
         }
 
         getJob();
 
-    }, [])
+    }, []);
+
+    if(job && job.userId !== ownerId){
+        navigate(`/job/details/${jobId}`);
+    }
 
     const { changeHandler, submitHandler, values, setValues } = useForm(Object.assign(initialValues, job), async (values) => {
 
@@ -42,6 +49,7 @@ const Edit = () => {
         }
 
     });
+
 
     return (
         <div className='edit-conteiner'>
