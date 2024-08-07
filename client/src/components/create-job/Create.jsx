@@ -87,7 +87,7 @@ const Create = () => {
                     </div>
 
                     <div id='form-group'>
-                        <label htmlFor='remote'>Remote</label>
+                        <label htmlFor='remote'>Remote {`(Home/On-Site/Hybrid)`}</label>
                         <input type="text" id="remote" name="remote" placeholder='Remote...' value={values.remote} onChange={changeHandler} />
                     </div>
 

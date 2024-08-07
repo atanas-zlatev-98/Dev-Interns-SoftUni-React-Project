@@ -116,7 +116,7 @@ const JobDetails = () => {
                 <div className='app-main-content'>
                     <div>
                         <h2 className='main-h2'>{currentJob.title}</h2>
-                        <img className='banner' src={currentJob.banner} alt={currentJob.title}/>
+                        <img className='banner' src={currentJob.banner} alt={currentJob.title} />
                         <ul className='main-ul'>
                             <h3>Job Description</h3>
                             <li>Position - {currentJob.position}</li>
@@ -132,18 +132,20 @@ const JobDetails = () => {
 
                     <h3>Information</h3>
 
-                    <img  src={currentJob.logoUrl} alt={currentJob.title} />
+                    <img src={currentJob.logoUrl} alt={currentJob.title} />
                     <p>{currentJob.ownerName}</p>
 
                     <p className='owner-summary'>{currentJob.ownerSummary}</p>
 
-                    <div className='save-btn-container'>
-                        <p>{currentJob.savedList?.length > 0 ? currentJob.savedList.length : "0"} people have saved this job!</p>
-                        {currentJob.ownerId != userId ? <button onClick={followUs}>
-                            {currentJob.savedList?.includes(userId) ? "Saved" : 'Save Job'}
-                        </button> : <p className='cant-save-own-job'>You can't save your own job</p>}
+                    {isAuthenticated &&
+                        <div className='save-btn-container'>
+                            <p>{currentJob.savedList?.length > 0 ? currentJob.savedList.length : "0"} people have saved this job!</p>
+                            {currentJob.ownerId != userId ? <NavLink className='app-navlink' onClick={followUs}>
+                                {currentJob.savedList?.includes(userId) ? "Saved" : 'Save Job'}
+                            </NavLink> : <p className='cant-save-own-job'>You can't save your own job</p>}
 
-                    </div>
+                        </div>
+                    }
                 </div>
             </div>
 

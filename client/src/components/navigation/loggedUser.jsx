@@ -22,13 +22,13 @@ const LoggedUser = ({username,logoUrl}) => {
 
             <Link to="/profile/created-jobs" className='created-offers'>
                 <span id='mini-menu-span-bg'><IoApps /></span>
-                <span >Created Applications</span>
+                <span >Created Job Applications</span>
             </Link>
         </div>
         <div>
             <Link to='/create' className='mini-menu'>
                 <span id='mini-menu-span-bg'><IoCreateOutline className='mini-menu-icon' /></span>
-                <span id='mini-menu-span'>Create Application</span>
+                <span id='mini-menu-span'>Create a Job Application</span>
             </Link>
             {/*<Link href='' className='mini-menu'>
                 <span id='mini-menu-span-bg'><FiUsers className='mini-menu-icon' /></span>
