@@ -137,14 +137,14 @@ const JobDetails = () => {
 
                     <p className='owner-summary'>{currentJob.ownerSummary}</p>
 
-                    {isAuthenticated &&
+                    {isAuthenticated ?
                         <div className='save-btn-container'>
                             <p>{currentJob.savedList?.length > 0 ? currentJob.savedList.length : "0"} people have saved this job!</p>
                             {currentJob.ownerId != userId ? <NavLink className='app-navlink' onClick={followUs}>
                                 {currentJob.savedList?.includes(userId) ? "Saved" : 'Save Job'}
                             </NavLink> : <p className='cant-save-own-job'>You can't save your own job</p>}
 
-                        </div>
+                        </div> : <p className='cant-save-own-job'>Login to Save jobs</p>
                     }
                 </div>
             </div>

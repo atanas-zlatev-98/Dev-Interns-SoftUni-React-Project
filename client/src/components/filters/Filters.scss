@@ -1,0 +1,26 @@
+.filtters {
+    padding: 20px;
+
+    h2{
+        margin: 0;
+        text-align: center;
+    }
+}
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    label{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    select{
+        padding: 5px;
+        font-size: 14px;
+        background-color: white;
+        color: black;
+        outline: none;
+        border-radius: 5px;
+    }
+}

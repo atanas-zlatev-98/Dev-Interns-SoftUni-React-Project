@@ -14,6 +14,7 @@ import Login from './components/auth/login/Login.jsx';
 import RouteGuard from './components/guards/RouteGuard.jsx';
 import RouteGuardLogged from './components/guards/RouteGuardLogged.jsx';
 import CreatedJobs from './components/profile/created-jobs/CreatedJobs.jsx';
+import Jobs from './components/jobs/Jobs.jsx';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/register" element={<RouteGuardLogged><Register/></RouteGuardLogged>}/>
             <Route path='/logout' element={<LogOut/>}/>
 
+            <Route path="/jobs" element={<Jobs/>}/>
             <Route path="/job/details/:jobId" element={<JobDetails/>}/>
             <Route path="/create" element={<RouteGuard><Create/></RouteGuard>}/>
             <Route path="/job/edit/:jobId" element={<RouteGuard><Edit/></RouteGuard>}/>

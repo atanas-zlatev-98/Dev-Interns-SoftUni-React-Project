@@ -26,7 +26,7 @@ const NavBar = () => {
                 <div className="navbar-ul">
                     <ul>
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='#'>Jobs</Link></li>
+                        <li><Link to='/jobs'>Jobs</Link></li>
                         <li><Link to='#'>Companies</Link></li>
                         <li><Link to='#'>Information</Link></li>
                     </ul>
@@ -50,7 +50,7 @@ const NavBar = () => {
 
                 <ul id='mobile-menu'>
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='#'>Jobs</Link></li>
+                    <li><Link to='/jobs'>Jobs</Link></li>
                     <li><Link to='#'>Companies</Link></li>
                     <li><Link to='#'>Information</Link></li>
                 </ul>

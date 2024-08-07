@@ -12,7 +12,11 @@ export const getJobById = async (jobId) => {
   const job = await get(`${baseURL}/jobs/${jobId}`);
   return job;
 };
-
+export const getLatestJobs = async () => {
+  const recentJobs = await get(`${baseURL}/jobs?offset=3&pageSize=3`);
+ const jobs =  Object.values(recentJobs);
+ return jobs
+}
 export const createJob = async (jobData) => {
   const create = await post(`${baseURL}/jobs`,jobData);
   return create;

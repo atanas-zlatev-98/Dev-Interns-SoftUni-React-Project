@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { getAllJobs } from '../api/jobs-api';
-import JobListItem from './job-list/JobListItem';
+import React from 'react'
 import './Home.scss';
+import LatestJobs from './latest-jobs/LatestJobs';
+import { NavLink } from 'react-router-dom';
+import Filters from '../filters/Filters';
 
 const Home = () => {
-
-    const [allJobs, setAllJobs] = useState([]);
-
-    useEffect(() => {
-
-        const getJobs = async () => {
-
-            try {
-                const result = await getAllJobs();
-                setAllJobs(result);
-
-            } catch (err) {
-                throw new Error(err.message);
-            }
-        }
-
-        getJobs();
-    }, [])
 
     return (
         <div className='main-home'>
@@ -32,17 +15,19 @@ const Home = () => {
                 </div>
             </div>
             <div className='main-content'>
-                <div className='filters'></div>
+                <div className='filters'>
+                    <Filters/>
+                </div>
 
                 <div className='content'>
                     <div className='all-apps-header'>
                         <div className='job-opp'>
-                            <p className='job-opp-inner m-0'>{allJobs.length} Job opportunities found</p>
+                            <p className='job-opp-inner m-0'> Recent job opportunities found</p>
                             {/*<p className='m-0 job-opp-inner-2'>You can see all available jobs below.</p>*/}
                         </div>
-                        <div className='newsletter'><p className='newsletter-inner'>Subscribe for our Newsletter</p></div>
+                        <NavLink to='/jobs' className='newsletter'><p className='newsletter-inner'>Check out all Jobs</p></NavLink>
                     </div>
-                    {allJobs?.map(job => <JobListItem key={job._id} {...job} />)}
+                    <LatestJobs/>
                 </div>
 
             </div>
