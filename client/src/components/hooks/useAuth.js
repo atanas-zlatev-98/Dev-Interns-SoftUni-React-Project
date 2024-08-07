@@ -48,6 +48,7 @@ export const useLogout = () => {
   const logoutHandler = async () => {
     await userLogout();
     logout();
+    window.location.reload();
   };
   return logoutHandler;
 };

@@ -13,9 +13,12 @@ const Profile = () => {
     useEffect(() => {
         const getJobs = async () => {
 
-            const result = await getAllJobs();
-
-            setAllJobs(result);
+            try{
+                const result = await getAllJobs();
+                setAllJobs(result);
+            }catch(err){
+                throw new Error(err.message);
+            }
 
         }
         getJobs();

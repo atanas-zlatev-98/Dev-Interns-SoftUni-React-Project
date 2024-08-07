@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useRegister } from '../../hooks/useAuth';
 import {useForm} from '../../hooks/useForm';
@@ -8,19 +8,39 @@ const initialValues = {username:'',email: '', password: '', rePassword: '', summ
 
 export const Register = () => {
 
+  const [error,setError] = useState('');
+
   const register = useRegister();
   const navigate = useNavigate();
+  
 
   const registerHandler = async (values) => {
+  
+    if(!values.username){
+      return setError('Username field must not be empty!');
+    }
+
+    if(!values.email){
+      return setError('Email field must not be empty!');
+    }
+
     if (values.password !== values.rePassword) {
-      return alert('Password do not match!');
+      return setError('Password do not match!');
+    }
+
+    if (!values.summary) {
+      return setError('Summary field must not be empty');
+    }
+
+    if (!values.logoUrl) {
+      return setError('Logo field must not be empty');
     }
 
     try{
       await register(values.username,values.email,values.password,values.summary,values.logoUrl);
       navigate('/');
     }catch(err){
-      console.log(err.message);
+      setError(err.message);
     }
   }
 
@@ -39,12 +59,12 @@ export const Register = () => {
         <form onSubmit={submitHandler}>
         <div id='form-group'>
             <label htmlFor='username'>Username</label>
-            <input type="text" id="username" name="username" placeholder="Username..."value={values.username} onChange={changeHandler} />
+            <input type="text" id="username" name="username" placeholder="Username..." value={values.username} onChange={changeHandler} />
           </div>
 
           <div id='form-group'>
             <label htmlFor='email'>Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Email..."value={values.email} onChange={changeHandler} />
+            <input type="email" id="email" name="email" placeholder="Email..." value={values.email} onChange={changeHandler} />
           </div>
 
           <div id='form-group'>
@@ -65,6 +85,10 @@ export const Register = () => {
           <div id='form-group'>
             <label htmlFor='logo'>Logo</label>
             <input type="text" id="logo" name="logoUrl" rows={5} placeholder='Image Url...' value={values.logoUrl} onChange={changeHandler}/>
+          </div>
+
+          <div id='form-group'>
+            {error ? <span className='error'>{error}</span> : <span></span>}
           </div>
 
           <div id='form-group'>

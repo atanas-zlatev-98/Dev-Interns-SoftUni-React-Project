@@ -19,7 +19,7 @@ export const useForm = (initialValues,submitCallback) => {
         e.preventDefault();
 
         await submitCallback(values);
-        setValues(initialValues);
+        //setValues(initialValues);
     }
 
     return {

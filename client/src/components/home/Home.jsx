@@ -11,11 +11,13 @@ const Home = () => {
 
         const getJobs = async () => {
 
+            try {
+                const result = await getAllJobs();
+                setAllJobs(result);
 
-            const result = await getAllJobs();
-
-            setAllJobs(result);
-
+            } catch (err) {
+                throw new Error(err.message);
+            }
         }
 
         getJobs();

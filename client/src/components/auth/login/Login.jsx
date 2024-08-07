@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogin } from '../../hooks/useAuth';
 import { useForm } from '../../hooks/useForm';
@@ -10,14 +10,25 @@ const Login = () => {
 
   const login = useLogin();
   const navigate = useNavigate();
+  const [error,setError] = useState('');
 
   const loginHandler = async ({ email, password }) => {
+
+    if(!email){
+      return setError('Email field is empty!')
+    }
+
+    if(!password){
+      return setError('Password field is empty!')
+    }
+
     try {
+
       await login(email, password);
       navigate('/');
 
     } catch (err) {
-      console.log(err.message)
+     setError('Invalid Login Credentials');
     }
 
   }
@@ -44,6 +55,10 @@ const Login = () => {
           <div id='form-group'>
             <label htmlFor='password'>Password</label>
             <input type="password" id="password" name="password" placeholder='Password...' value={values.password} onChange={changeHandler} />
+          </div>
+
+          <div id='form-group'>
+            {error ? <span className='error'>{error}</span> : <span></span>}
           </div>
 
           <div id='form-group'>

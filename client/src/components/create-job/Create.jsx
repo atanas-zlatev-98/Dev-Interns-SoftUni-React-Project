@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
-import {Link, useNavigate} from 'react-router-dom';
-import {useForm} from '../hooks/useForm';
-import {createJob} from '../api/jobs-api';
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from '../hooks/useForm';
+import { createJob } from '../api/jobs-api';
 import { AuthContext } from '../context/authContext';
 import './Create.scss';
 
 const Create = () => {
 
+    const [error, setError] = useState('');
+
     const navigate = useNavigate()
 
-    const {userId,logoUrl} = useContext(AuthContext);
+    const { userId, logoUrl } = useContext(AuthContext);
 
     const initialValues = {
         userId: userId,
@@ -19,19 +21,40 @@ const Create = () => {
         location: "",
         remote: "",
         description: "",
-        banner:'',
-      }
-    
+        banner: '',
+    }
+
     const createHandler = async (values) => {
 
-        try{
-          const {_id:jobId} = await createJob(values);
-          navigate(`/job/details/${jobId}`);
-        }catch(err){
-          console.log(err.message);
+        if (!values.title) {
+            return setError('Title field is required!')
         }
-    
-      }
+
+        if (!values.position) {
+            return setError('Position field is required!')
+        }
+
+        if (!values.location) {
+            return setError('Location field is required!')
+        }
+        if (!values.remote) {
+            return setError('Remote field is required!')
+        }
+        if (!values.description) {
+            return setError('Description field is required!')
+        }
+        if (!values.banner) {
+            return setError('Banner field is required!')
+        }
+
+        try {
+            const { _id: jobId } = await createJob(values);
+            navigate(`/job/details/${jobId}`);
+        } catch (err) {
+            throw new Error(err.message);
+        }
+
+    }
 
 
     const { values, changeHandler, submitHandler } = useForm(initialValues, createHandler);
@@ -73,6 +96,10 @@ const Create = () => {
                     <div id='form-group'>
                         <label htmlFor='logo'>Banner</label>
                         <input type="text" id="Banner" name="banner" rows={5} placeholder='Banner URL...' value={values.banner} onChange={changeHandler} />
+                    </div>
+
+                    <div id='form-group'>
+                        {error ? <span className='error'>{error}</span> : <span></span>}
                     </div>
 
                     <div id='form-group'>

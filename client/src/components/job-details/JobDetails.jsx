@@ -23,7 +23,7 @@ const JobDetails = () => {
             }
 
         } catch (err) {
-            console.log(err.message);
+            throw new Error(err.message);
         }
 
     }
@@ -31,8 +31,13 @@ const JobDetails = () => {
 
     useEffect(() => {
         const findJobById = async () => {
-            const job = await getJobById(jobId);
-            setCurrentJob(job);
+            try{
+                const job = await getJobById(jobId);
+                setCurrentJob(job);
+            }catch(err){
+                throw new Error(err.message);
+            }
+          
         }
 
         findJobById();

@@ -17,7 +17,7 @@ const CreatedJobs = () => {
                 const result = await getAllJobs();
                 setAllJobs(result);
             } catch (err) {
-                console.log(err.message);
+                throw new Error(err.message);
             }
         }
         getJobs();
@@ -29,10 +29,8 @@ const CreatedJobs = () => {
         <div className='created-jobs-conteiner'>
             <div className='created-jobs'>
 
-             
                     <h2 className='created-jobs-h2'>Created Jobs</h2>
                     {filteredJobs.length > 0 ? filteredJobs.map(job => <JobListItem key={job._Id} {...job} />) : <p className='no-apps'>No Jobs created</p>}
-                   
                 
             </div>
         </div>
